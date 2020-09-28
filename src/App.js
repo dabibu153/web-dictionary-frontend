@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./css/app.css";
+import { useSelector, useDispatch } from "react-redux";
+import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
+import Dictionary from "./dictionary.js";
+import WordDetail from "./wordDetail.js";
+import axios from "axios";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/getMongoData")
+      .then((res) => {
+        console.log("mongoData is : ", res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <div className="appBody">
+          <Switch>
+            <Route path="/" exact component={Dictionary} />
+            <Route path="/:word_id" exact component={WordDetail} />
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 

@@ -1,0 +1,17 @@
+.App {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.appBody {
+  background-color: #5d1049;
+  height: 90%;
+  min-height: 500px;
+  width: 40%;
+  min-width: 500px;
+  border-radius: 20px;
+}
