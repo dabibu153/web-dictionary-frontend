@@ -28,6 +28,14 @@
   overflow: hidden;
 }
 
+.searchBar > button {
+  height: 40px;
+  width: 60px;
+  background-color: white;
+  color: #5d1049;
+  cursor: pointer;
+}
+
 .wordList {
   flex: 1;
   background-color: white;
