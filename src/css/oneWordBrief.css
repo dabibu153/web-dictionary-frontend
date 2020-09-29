@@ -1,0 +1,22 @@
+.briefBlock {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.briefBlock > hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.briefHeader {
+  font-size: 25px;
+  font-weight: 500;
+}
+.categories {
+  margin: 10px;
+  font-weight: 500;
+}

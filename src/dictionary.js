@@ -3,19 +3,33 @@ import "./css/dictionary.css";
 import OneWordBrief from "./oneWordBrief.js";
 import { AiOutlineSearch } from "react-icons/ai";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 
 function Dictionary() {
   const [search, setsearch] = useState("");
+
+  const briefData = useSelector((state) => state.briefData);
+  const dispatch = useDispatch();
 
   const handleSearch = async () => {
     if (search === "") {
       console.log("search box empty");
     } else {
+      setsearch("");
       const data = { searchKeyWord: search };
       axios
         .post("http://localhost:5000/api/searchOxford", data)
         .then((res) => {
           console.log(res);
+          axios
+            .get("http://localhost:5000/api/getMongoData")
+            .then((res) => {
+              console.log("mongoData is : ", res.data);
+              dispatch({ type: "SET_BRIEF_DATA", data: res.data });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         })
         .catch((err) => {
           console.log(err);
@@ -44,14 +58,18 @@ function Dictionary() {
         </div>
       </div>
       <div className="wordList">
-        <OneWordBrief />
-        <OneWordBrief />
-        <OneWordBrief />
-        <OneWordBrief />
-        <OneWordBrief />
-        <OneWordBrief />
-        <OneWordBrief />
-        <OneWordBrief />
+        {briefData ? (
+          <div>
+            {briefData.map((oneWordBrief) => (
+              <OneWordBrief
+                name={oneWordBrief.name}
+                category={oneWordBrief.category}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="loading">loading!</div>
+        )}
       </div>
     </div>
   );

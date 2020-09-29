@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import Dictionary from "./dictionary.js";
 import WordDetail from "./wordDetail.js";
+
 import axios from "axios";
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
     axios
       .get("http://localhost:5000/api/getMongoData")
       .then((res) => {
-        console.log("mongoData is : ", res);
+        console.log("mongoData is : ", res.data);
+        dispatch({ type: "SET_BRIEF_DATA", data: res.data });
       })
       .catch((err) => {
         console.log(err);
