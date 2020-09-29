@@ -1,6 +1,6 @@
 const initialState = {
   briefData: [],
-  detailedData: [],
+  detailedData: {},
 };
 
 function rootReducer(state = initialState, action) {

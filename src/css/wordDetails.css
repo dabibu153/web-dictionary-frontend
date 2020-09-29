@@ -1,0 +1,12 @@
+.DetailsBlock {
+  height: 100%;
+  display: flex;
+}
+
+.DetailsBlock > div {
+  flex: 1;
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+}

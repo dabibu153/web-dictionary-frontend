@@ -64,6 +64,7 @@ function Dictionary() {
               <OneWordBrief
                 name={oneWordBrief.name}
                 category={oneWordBrief.category}
+                style={{ cursor: "pointer" }}
               />
             ))}
           </div>
