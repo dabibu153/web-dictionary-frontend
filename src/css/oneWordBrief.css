@@ -10,11 +10,13 @@
   margin-bottom: 20px;
   margin-left: 10px;
   margin-right: 10px;
+  position: relative;
 }
 
 .briefHeader {
   font-size: 25px;
   font-weight: 500;
+  color: #5d1049;
 }
 .categories {
   margin: 10px;
@@ -23,4 +25,9 @@
 .delete {
   margin-left: 10px;
   padding-top: 5px;
+  color: #5d1049;
+}
+
+.wait {
+  position: absolute;
 }

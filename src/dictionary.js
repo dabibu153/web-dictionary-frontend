@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 function Dictionary() {
   const [search, setsearch] = useState("");
+  const [wait, setwait] = useState(false);
 
   const briefData = useSelector((state) => state.briefData);
   const dispatch = useDispatch();
@@ -16,16 +17,17 @@ function Dictionary() {
       console.log("search box empty");
     } else {
       setsearch("");
+      setwait(true);
       const data = { searchKeyWord: search };
       axios
         .post("http://localhost:5000/api/searchOxford", data)
         .then((res) => {
-          console.log(res);
           axios
             .get("http://localhost:5000/api/getMongoData")
             .then((res) => {
               console.log("mongoData is : ", res.data);
               dispatch({ type: "SET_BRIEF_DATA", data: res.data });
+              setwait(false);
             })
             .catch((err) => {
               console.log(err);
@@ -67,6 +69,7 @@ function Dictionary() {
                 style={{ cursor: "pointer" }}
               />
             ))}
+            {wait ? <div className="wait">Please Wait</div> : <div></div>}
           </div>
         ) : (
           <div className="loading">loading!</div>

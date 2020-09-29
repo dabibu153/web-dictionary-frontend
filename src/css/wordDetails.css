@@ -9,4 +9,49 @@
   margin: 10px;
   padding: 10px;
   border-radius: 20px;
+  overflow-y: scroll;
+}
+
+.defAndExamples {
+}
+
+hr {
+  margin: 20px;
+}
+
+.header2 {
+  color: #5d1049;
+  font-size: 35px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.headerAndBack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.originInfo {
+  color: grey;
+  font-size: 15px;
+}
+
+.catType {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #5d1049;
+  font-weight: 500;
+}
+
+.definitionOne {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+.exampleOne {
+  font-size: 13px;
+  color: #5d1049;
+  margin-bottom: 30px;
 }
