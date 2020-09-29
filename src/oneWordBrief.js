@@ -11,12 +11,13 @@ function OneWordBrief({ name, category }) {
 
   const handleDelete = () => {
     const data = { word: name };
-    Axios.post("http://localhost:5000/api/deleteMongoData", data).then(
-      (res) => {
-        console.log("fresh list", res.data);
-        dispatch({ type: "SET_BRIEF_DATA", data: res.data });
-      }
-    );
+    Axios.post(
+      "https://dictionary-backend-dabibu.herokuapp.com/api/deleteMongoData",
+      data
+    ).then((res) => {
+      console.log("fresh list", res.data);
+      dispatch({ type: "SET_BRIEF_DATA", data: res.data });
+    });
   };
   const handleDetailView = () => {
     // const data = { word: name };

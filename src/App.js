@@ -11,7 +11,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/getMongoData")
+      .get("https://dictionary-backend-dabibu.herokuapp.com/api/getMongoData")
       .then((res) => {
         console.log("mongoData is : ", res.data);
         dispatch({ type: "SET_BRIEF_DATA", data: res.data });

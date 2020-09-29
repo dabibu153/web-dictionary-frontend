@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import "./css/dictionary.css";
 import OneWordBrief from "./oneWordBrief.js";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -20,10 +20,15 @@ function Dictionary() {
       setwait(true);
       const data = { searchKeyWord: search };
       axios
-        .post("http://localhost:5000/api/searchOxford", data)
+        .post(
+          "https://dictionary-backend-dabibu.herokuapp.com/api/searchOxford",
+          data
+        )
         .then((res) => {
           axios
-            .get("http://localhost:5000/api/getMongoData")
+            .get(
+              "https://dictionary-backend-dabibu.herokuapp.com/api/getMongoData"
+            )
             .then((res) => {
               console.log("mongoData is : ", res.data);
               dispatch({ type: "SET_BRIEF_DATA", data: res.data });
@@ -61,7 +66,12 @@ function Dictionary() {
       </div>
       <div className="wordList">
         {briefData ? (
-          <div>
+          <Fragment>
+            {wait ? (
+              <div className="wait">Please Wait</div>
+            ) : (
+              <div style={{ color: "white" }}>.</div>
+            )}
             {briefData.map((oneWordBrief) => (
               <OneWordBrief
                 name={oneWordBrief.name}
@@ -69,8 +79,7 @@ function Dictionary() {
                 style={{ cursor: "pointer" }}
               />
             ))}
-            {wait ? <div className="wait">Please Wait</div> : <div></div>}
-          </div>
+          </Fragment>
         ) : (
           <div className="loading">loading!</div>
         )}

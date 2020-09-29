@@ -62,3 +62,25 @@
   background-clip: padding-box;
   margin: 10px;
 }
+
+.wait {
+  position: sticky;
+  top: 0;
+  text-align: right;
+  width: fit-content;
+  background-color: #5d1049;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+
+  /* animation: 1s rotate linear infinite; */
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

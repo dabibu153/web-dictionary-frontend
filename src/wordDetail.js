@@ -11,7 +11,10 @@ function WordDetail(props) {
 
   useEffect(() => {
     const data = { word: props.match.params.word_id };
-    Axios.post("http://localhost:5000/api/getDetails", data).then((res) => {
+    Axios.post(
+      "https://dictionary-backend-dabibu.herokuapp.com/api/getDetails",
+      data
+    ).then((res) => {
       dispatch({ type: "SET_DETAILED_DATA", data: res.data });
     });
   }, []);

@@ -16,7 +16,7 @@
 }
 
 hr {
-  margin: 20px;
+  margin: 10px;
 }
 
 .header2 {
@@ -25,6 +25,7 @@ hr {
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: 800;
+  margin-left: 10px;
 }
 
 .headerAndBack {
@@ -35,6 +36,7 @@ hr {
 .originInfo {
   color: grey;
   font-size: 15px;
+  margin-left: 10px;
 }
 
 .catType {
@@ -42,16 +44,19 @@ hr {
   margin-bottom: 10px;
   color: #5d1049;
   font-weight: 500;
+  margin-left: 10px;
 }
 
 .definitionOne {
   margin-bottom: 5px;
   margin-top: 5px;
   font-size: 18px;
+  margin-left: 10px;
 }
 
 .exampleOne {
   font-size: 13px;
   color: #5d1049;
   margin-bottom: 30px;
+  margin-left: 10px;
 }
