@@ -18,9 +18,15 @@ function WordDetail(props) {
       dispatch({ type: "SET_DETAILED_DATA", data: res.data });
     });
   }, []);
+
+  const handleStateClear = () => {
+    dispatch({ type: "SET_DETAILED_DATA", data: {} });
+  };
   return (
     <div className="DetailsBlock">
-      {detailedData ? (
+      {detailedData === {} ? (
+        <div>loading!!!</div>
+      ) : (
         <div>
           <div className="headerAndBack">
             <div className="header2">{detailedData.name}</div>
@@ -32,7 +38,7 @@ function WordDetail(props) {
                 color: "black",
               }}
             >
-              <BsBackspace size={30} />
+              <BsBackspace size={30} onClick={handleStateClear} />
             </Link>
           </div>
           <hr />
@@ -61,8 +67,6 @@ function WordDetail(props) {
             ))}
           </div>
         </div>
-      ) : (
-        <div>loading....</div>
       )}
     </div>
   );

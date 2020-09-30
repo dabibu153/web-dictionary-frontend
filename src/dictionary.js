@@ -1,15 +1,17 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./css/dictionary.css";
 import OneWordBrief from "./oneWordBrief.js";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch, AiOutlineLoading3Quarters } from "react-icons/ai";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 
 function Dictionary() {
   const [search, setsearch] = useState("");
-  const [wait, setwait] = useState(false);
+  const [wait, setwait] = useState("firstload");
+  const [wait2, setwait2] = useState("firstload");
 
   const briefData = useSelector((state) => state.briefData);
+  const wait1 = useSelector((state) => state.wait1);
   const dispatch = useDispatch();
 
   const handleSearch = async () => {
@@ -17,7 +19,7 @@ function Dictionary() {
       console.log("search box empty");
     } else {
       setsearch("");
-      setwait(true);
+      setwait("visible");
       const data = { searchKeyWord: search };
       axios
         .post(
@@ -25,18 +27,26 @@ function Dictionary() {
           data
         )
         .then((res) => {
-          axios
-            .get(
-              "https://dictionary-backend-dabibu.herokuapp.com/api/getMongoData"
-            )
-            .then((res) => {
-              console.log("mongoData is : ", res.data);
-              dispatch({ type: "SET_BRIEF_DATA", data: res.data });
-              setwait(false);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          if (res.data === "word not found") {
+            setwait("invisible");
+            setwait2("visible");
+            setTimeout(() => {
+              setwait2("invisible");
+            }, 2000);
+          } else {
+            axios
+              .get(
+                "https://dictionary-backend-dabibu.herokuapp.com/api/getMongoData"
+              )
+              .then((res) => {
+                console.log("mongoData is : ", res.data);
+                dispatch({ type: "SET_BRIEF_DATA", data: res.data });
+                setwait("invisible");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -67,18 +77,25 @@ function Dictionary() {
       <div className="wordList">
         {briefData ? (
           <Fragment>
-            {wait ? (
-              <div className="wait">Please Wait</div>
-            ) : (
-              <div style={{ color: "white" }}>.</div>
-            )}
-            {briefData.map((oneWordBrief) => (
-              <OneWordBrief
-                name={oneWordBrief.name}
-                category={oneWordBrief.category}
-                style={{ cursor: "pointer" }}
-              />
-            ))}
+            <div className="loaders">
+              <div className={wait}>
+                Searching New Word{" "}
+                <AiOutlineLoading3Quarters className="rotation" />
+              </div>
+              <div className={wait2}>word not found</div>
+              <div className={wait1}>
+                Deleting word <AiOutlineLoading3Quarters className="rotation" />
+              </div>
+            </div>
+            <div>
+              {briefData.map((oneWordBrief) => (
+                <OneWordBrief
+                  name={oneWordBrief.name}
+                  category={oneWordBrief.category}
+                  style={{ cursor: "pointer" }}
+                />
+              ))}
+            </div>
           </Fragment>
         ) : (
           <div className="loading">loading!</div>

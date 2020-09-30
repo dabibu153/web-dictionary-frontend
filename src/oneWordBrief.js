@@ -10,6 +10,7 @@ function OneWordBrief({ name, category }) {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
+    dispatch({ type: "SET_WAIT1", data: "visible" });
     const data = { word: name };
     Axios.post(
       "https://dictionary-backend-dabibu.herokuapp.com/api/deleteMongoData",
@@ -17,6 +18,7 @@ function OneWordBrief({ name, category }) {
     ).then((res) => {
       console.log("fresh list", res.data);
       dispatch({ type: "SET_BRIEF_DATA", data: res.data });
+      dispatch({ type: "SET_WAIT1", data: "invisible" });
     });
   };
   const handleDetailView = () => {
@@ -25,6 +27,7 @@ function OneWordBrief({ name, category }) {
     //   dispatch({ type: "SET_DETAILED_DATA", data: res.data });
     //   setredirect(true);
     // });
+
     setredirect(true);
   };
   return (

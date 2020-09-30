@@ -10,9 +10,13 @@
   padding: 10px;
   border-radius: 20px;
   overflow-y: scroll;
+  -webkit-animation: fadein 1s linear forwards;
+  animation: fadein 1s linear forwards;
 }
 
-.defAndExamples {
+.fade {
+  -webkit-animation: fadein 1s linear forwards;
+  animation: fadein 1s linear forwards;
 }
 
 hr {
@@ -35,8 +39,13 @@ hr {
 }
 .originInfo {
   color: grey;
-  font-size: 15px;
+  font-size: 20px;
   margin-left: 10px;
+  font-weight: 500;
+}
+
+.originInfo:hover {
+  animation: 300ms colorchange linear forwards;
 }
 
 .catType {
@@ -59,4 +68,44 @@ hr {
   color: #5d1049;
   margin-bottom: 30px;
   margin-left: 10px;
+}
+
+.exampleOne:hover {
+  animation: 300ms sizechange linear forwards;
+}
+
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes sizechange {
+  0% {
+    font-size: 13px;
+  }
+  100% {
+    font-size: 15px;
+  }
+}
+
+@keyframes colorchange {
+  0% {
+    color: grey;
+  }
+  100% {
+    color: black;
+  }
 }

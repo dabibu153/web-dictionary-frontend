@@ -63,7 +63,18 @@
   margin: 10px;
 }
 
-.wait {
+.firstload {
+  position: sticky;
+  top: 0;
+  text-align: right;
+  width: fit-content;
+  background-color: white;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.invisible {
   position: sticky;
   top: 0;
   text-align: right;
@@ -72,8 +83,64 @@
   color: white;
   padding: 5px;
   border-radius: 10px;
+  -webkit-animation: fadeout 400ms linear forwards;
+  animation: fadeout 400ms linear forwards;
 
   /* animation: 1s rotate linear infinite; */
+}
+.visible {
+  position: sticky;
+  top: 0;
+  text-align: right;
+  width: fit-content;
+  background-color: #5d1049;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  -webkit-animation: fadein 400ms linear forwards;
+  animation: fadein 400ms linear forwards;
+
+  /* animation: 1s rotate linear infinite; */
+}
+
+.rotation {
+  animation: 1s rotate linear infinite;
+}
+
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes rotate {
@@ -83,4 +150,14 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.loaders {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.briefList {
+  -webkit-animation: fadein 400ms linear forwards;
+  animation: fadein 400ms linear forwards;
 }
