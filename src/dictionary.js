@@ -66,10 +66,10 @@ function Dictionary() {
               height: "70%",
               width: "70%",
               fontSize: "17px",
-              color: "#5d1049",
+              color: "black",
               backgroundColor: "white",
             }}
-            type="submit"
+            type="text"
             value={search}
             onChange={(e) => setsearch(e.target.value)}
           />
