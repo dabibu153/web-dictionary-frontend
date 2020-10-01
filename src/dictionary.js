@@ -67,6 +67,7 @@ function Dictionary() {
               width: "70%",
               fontSize: "17px",
               color: "#5d1049",
+              backgroundColor: "white",
             }}
             type="submit"
             value={search}
