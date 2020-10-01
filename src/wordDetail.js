@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./css/wordDetails.css";
 import { useSelector, useDispatch } from "react-redux";
-
 import { BsBackspace } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Axios from "axios";
