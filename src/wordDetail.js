@@ -20,6 +20,7 @@ function WordDetail(props) {
   // }, []);
 
   const handleStateClear = () => {
+    dispatch({ type: "SET_WAIT1", data: "firstload" });
     dispatch({ type: "SET_DETAILED_DATA", data: {} });
   };
   return (

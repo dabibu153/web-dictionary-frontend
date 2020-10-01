@@ -32,38 +32,40 @@ function OneWordBrief({ name, category }) {
     });
   };
   return (
-    <div className="briefBlock">
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+    <div>
+      <div className="briefBlock">
         <div
-          className="briefHeader"
-          onClick={handleDetailView}
-          style={{ cursor: "pointer" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
         >
-          {name}
-        </div>
-        <div className="delete">
-          <AiFillDelete
-            size={25}
-            onClick={handleDelete}
+          <div
+            className="briefHeader"
+            onClick={handleDetailView}
             style={{ cursor: "pointer" }}
-          />
-        </div>
-      </div>
-      <div style={{ cursor: "pointer" }}>
-        {category.map((x) => (
-          <div className="categories" onClick={handleDetailView}>
-            ({x.type}) {x.defAndEg[0].def}
+          >
+            {name}
           </div>
-        ))}
-      </div>
+          <div className="delete">
+            <AiFillDelete
+              size={25}
+              onClick={handleDelete}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+        </div>
+        <div style={{ cursor: "pointer" }}>
+          {category.map((x) => (
+            <div className="categories" onClick={handleDetailView}>
+              ({x.type}) {x.defAndEg[0].def}
+            </div>
+          ))}
+        </div>
 
+        {redirect ? <Redirect to={`/${name}`} /> : <div></div>}
+      </div>
       <hr />
-      {redirect ? <Redirect to={`/${name}`} /> : <div></div>}
     </div>
   );
 }

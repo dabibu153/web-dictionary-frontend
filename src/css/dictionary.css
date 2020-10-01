@@ -162,3 +162,8 @@
   -webkit-animation: fadein 400ms linear forwards;
   animation: fadein 400ms linear forwards;
 }
+
+.fadeAnimation {
+  -webkit-animation: fadein 400ms linear forwards;
+  animation: fadein 400ms linear forwards;
+}

@@ -7,6 +7,29 @@
   animation: fadein 1s linear forwards;
 }
 
+@keyframes hovereffect {
+  0% {
+    color: #5d1049;
+    background-color: white;
+  }
+  100% {
+    color: white;
+    background-color: #5d1049;
+  }
+}
+
+.briefBlock:hover .briefHeader {
+  animation: 400ms hovereffect linear forwards;
+}
+
+.briefBlock:hover .categories {
+  color: #5d1049;
+}
+
+.briefBlock:hover .delete {
+  color: black;
+}
+
 .briefBlock > hr {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -19,6 +42,14 @@
   font-size: 25px;
   font-weight: 500;
   color: #5d1049;
+  background-color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
 }
 .categories {
   margin: 10px;
