@@ -167,3 +167,76 @@
   -webkit-animation: fadein 400ms linear forwards;
   animation: fadein 400ms linear forwards;
 }
+
+.addNewWord {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+.addButton {
+  color: #5d1049;
+  cursor: pointer;
+}
+
+.showNone {
+  display: none;
+}
+.addTextV {
+  border-radius: 10px;
+  padding: 5px;
+  animation: 300ms makevisible linear forwards;
+}
+.addTextInV {
+  animation: 300ms makeinvisible linear forwards;
+}
+
+@keyframes makevisible {
+  0% {
+    color: white;
+    background-color: white;
+  }
+  100% {
+    color: white;
+    background-color: #5d1049;
+  }
+}
+@keyframes makeinvisible {
+  0% {
+    color: white;
+    background-color: #5d1049;
+  }
+  100% {
+    color: white;
+    background-color: white;
+    display: none;
+  }
+}
+
+.winHide {
+  display: none;
+}
+
+.winShow {
+  display: flex;
+  align-items: center;
+  background-color: #5d1049;
+  border-radius: 10px;
+  margin: 20px;
+  height: 30px;
+  width: 300px;
+  overflow: hidden;
+  padding: 5px;
+  animation: 300ms makevisible linear forwards;
+}
+
+.winShow > button {
+  height: 25px;
+  width: 60px;
+  background-color: white;
+  color: #5d1049;
+  cursor: pointer;
+}
