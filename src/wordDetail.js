@@ -9,15 +9,15 @@ function WordDetail(props) {
   const detailedData = useSelector((state) => state.detailedData);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const data = { word: props.match.params.word_id };
-    Axios.post(
-      "https://dictionary-backend-dabibu.herokuapp.com/api/getDetails",
-      data
-    ).then((res) => {
-      dispatch({ type: "SET_DETAILED_DATA", data: res.data });
-    });
-  }, []);
+  // useEffect(() => {
+  //   const data = { word: props.match.params.word_id };
+  //   Axios.post(
+  //     "https://dictionary-backend-dabibu.herokuapp.com/api/getDetails",
+  //     data
+  //   ).then((res) => {
+  //     dispatch({ type: "SET_DETAILED_DATA", data: res.data });
+  //   });
+  // }, []);
 
   const handleStateClear = () => {
     dispatch({ type: "SET_DETAILED_DATA", data: {} });

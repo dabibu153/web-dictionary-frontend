@@ -22,13 +22,14 @@ function OneWordBrief({ name, category }) {
     });
   };
   const handleDetailView = () => {
-    // const data = { word: name };
-    // Axios.post("http://localhost:5000/api/getDetails", data).then((res) => {
-    //   dispatch({ type: "SET_DETAILED_DATA", data: res.data });
-    //   setredirect(true);
-    // });
-
-    setredirect(true);
+    const data = { word: name };
+    Axios.post(
+      "https://dictionary-backend-dabibu.herokuapp.com/api/getDetails",
+      data
+    ).then((res) => {
+      dispatch({ type: "SET_DETAILED_DATA", data: res.data });
+      setredirect(true);
+    });
   };
   return (
     <div className="briefBlock">
