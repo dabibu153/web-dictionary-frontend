@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./css/app.css";
-import { useSelector, useDispatch } from "react-redux";
-import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dictionary from "./dictionary.js";
 import WordDetail from "./wordDetail.js";
 
@@ -13,7 +13,6 @@ function App() {
     axios
       .get("https://dictionary-backend-dabibu.herokuapp.com/api/getMongoData")
       .then((res) => {
-        console.log("mongoData is : ", res.data);
         dispatch({ type: "SET_BRIEF_DATA", data: res.data });
       })
       .catch((err) => {

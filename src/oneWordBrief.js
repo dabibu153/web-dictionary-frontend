@@ -3,7 +3,7 @@ import "./css/oneWordBrief.css";
 import { Redirect } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
 import Axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function OneWordBrief({ name, category }) {
   const [redirect, setredirect] = useState(false);
@@ -57,7 +57,7 @@ function OneWordBrief({ name, category }) {
         </div>
         <div style={{ cursor: "pointer" }}>
           {category.map((x) => (
-            <div className="categories" onClick={handleDetailView}>
+            <div key={x.type} className="categories" onClick={handleDetailView}>
               ({x.type}) {x.defAndEg[0].def}
             </div>
           ))}

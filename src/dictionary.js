@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import "./css/dictionary.css";
 import OneWordBrief from "./oneWordBrief.js";
 import { AiOutlineSearch, AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -59,6 +59,7 @@ function Dictionary() {
         <div className="vocab">VOCAB</div>
         <div className="searchBar">
           <AiOutlineSearch size={30} style={{ color: "#5d1049" }} />
+
           <input
             style={{
               border: "none",
@@ -67,7 +68,7 @@ function Dictionary() {
               fontSize: "17px",
               color: "#5d1049",
             }}
-            type="text"
+            type="submit"
             value={search}
             onChange={(e) => setsearch(e.target.value)}
           />
@@ -90,6 +91,7 @@ function Dictionary() {
             <div>
               {briefData.map((oneWordBrief) => (
                 <OneWordBrief
+                  key={oneWordBrief.name}
                   name={oneWordBrief.name}
                   category={oneWordBrief.category}
                   style={{ cursor: "pointer" }}
